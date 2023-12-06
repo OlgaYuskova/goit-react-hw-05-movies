@@ -1,22 +1,38 @@
-import React from 'react';
-import { searchMovie } from 'API';
+import { useState } from 'react';
 
-const SearchMovies = () => {
+const SearchMovies = ({ onSubmit }) => {
+  const [query, setQuery] = useState('');
+
+  const handleChange = e => {
+    setQuery(e.target.value);
+  };
+  const reset = () => {
+    setQuery('');
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSubmit(query);
+    reset();
+  };
+
   return (
     <div>
-      <form>
-        <button type="submit">
-          <span>Search</span>
-        </button>
-        <input
-          type="text"
-          autoComplete="off"
-          name="text"
-          placeholder="Search images and photos"
-        />
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input
+            onChange={handleChange}
+            aria-label="select"
+            className="input"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movie"
+            value={query}
+          />
+        </label>
+        <button type="submit">Search</button>
       </form>
     </div>
   );
 };
-
 export default SearchMovies;

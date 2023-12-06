@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { fetchMovies } from '../API';
 
 const Home = () => {
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -23,8 +24,10 @@ const Home = () => {
       <h2>Popular Movies</h2>
       <ul>
         {movies.map(movie => (
-          <li>
-            <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
+          <li key={movie.id}>
+            <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
+            </NavLink>
           </li>
         ))}
       </ul>
