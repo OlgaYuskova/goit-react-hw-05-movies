@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import MoviesSearchList from 'components/MoviesSearchList.styled';
 
 const MovieSearchList = ({ movies, location }) => {
   return (
-    <ul>
+    <MoviesSearchList>
       {movies.map(movie => {
         return (
           <li key={movie.id}>
@@ -12,7 +13,7 @@ const MovieSearchList = ({ movies, location }) => {
           </li>
         );
       })}
-    </ul>
+    </MoviesSearchList>
   );
 };
 

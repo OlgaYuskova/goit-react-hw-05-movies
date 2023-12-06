@@ -1,25 +1,23 @@
 import styled from 'styled-components';
 
-export const CastList = styled('ul')`
+export const ReviewsList = styled('ul')`
   width: 100%;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const CastItem = styled('li')`
-  height: 400px;
-  width: 300px;
+export const ReviewsItem = styled('li')`
+  padding: 20px;
+  height: 100%;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 1px solid #000000;
   border-radius: 20px;
-
-  & img {
-    height: 200px;
-    width: auto;
-  }
 `;
