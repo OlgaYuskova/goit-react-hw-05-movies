@@ -5,10 +5,11 @@ import {
   MovieDetailsContainer,
   MovieDetailsInfo,
   MovieCastAndReviews,
-} from 'components/MovieDetailsContainer.styled';
+} from '../components/MoviesList/MovieDetailsContainer.styled.js';
 
 const MovieDetails = () => {
   const location = useLocation();
+  const backLink = location.state?.from ?? '/';
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState('');
 
@@ -33,7 +34,9 @@ const MovieDetails = () => {
 
   return (
     <>
-      {location.state && <NavLink to={location.state.from}>Go back</NavLink>}
+      <NavLink to={backLink}>
+        <button type="button">Go back</button>
+      </NavLink>
       <MovieDetailsContainer>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}

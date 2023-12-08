@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import SearchMovies from 'components/SearchMovies/SearchMovies';
-import MovieSearchList from 'components/MovieSearchList/MovieSearchList';
+// import MovieSearchList from 'components/MovieSearchList/MovieSearchList';
 import { searchMovie } from '../API';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Movie = () => {
   const location = useLocation();
@@ -41,7 +42,7 @@ const Movie = () => {
     <section>
       <div>
         <SearchMovies onSubmit={handleFormSubmit} />
-        {movies && <MovieSearchList movies={movies} location={location} />}
+        {movies && <MoviesList movies={movies} location={location} />}
       </div>
     </section>
   );

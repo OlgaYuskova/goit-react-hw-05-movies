@@ -22,14 +22,18 @@ const Reviews = () => {
 
   return (
     <div>
-      <ReviewsList>
-        {movieReviews.map(review => (
-          <ReviewsItem key={review.id}>
-            <h3>Author: {review.author}</h3>
-            <p>{review.content}</p>
-          </ReviewsItem>
-        ))}
-      </ReviewsList>
+      {movieReviews.length > 0 ? (
+        <ReviewsList>
+          {movieReviews.map(review => (
+            <ReviewsItem key={review.id}>
+              <h3>Author: {review.author}</h3>
+              <p>{review.content}</p>
+            </ReviewsItem>
+          ))}
+        </ReviewsList>
+      ) : (
+        <div>No Reviews information available</div>
+      )}
     </div>
   );
 };

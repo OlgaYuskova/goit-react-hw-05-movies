@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { fetchMovies } from '../API';
-import PopularMoviesList from 'components/PopularMoviesList.styled';
-import HomeContaiter from 'components/HomeContaiter.styled';
+import HomeContaiter from '../components/Home/HomeContaiter.styled';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
   const location = useLocation();
@@ -24,15 +24,7 @@ const Home = () => {
   return (
     <HomeContaiter>
       <h2>Popular Movies</h2>
-      <PopularMoviesList>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
-              {movie.title}
-            </NavLink>
-          </li>
-        ))}
-      </PopularMoviesList>
+      <MoviesList movies={movies} location={location} />
     </HomeContaiter>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FormSearch from 'components/FormSearch.styled';
+import FormSearch from './FormSearch.styled';
 
 const SearchMovies = ({ onSubmit }) => {
   const [query, setQuery] = useState('');

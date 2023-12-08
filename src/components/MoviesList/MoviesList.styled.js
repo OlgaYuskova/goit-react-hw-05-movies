@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const PopularMoviesList = styled('ul')`
+const MovieList = styled('ul')`
   margin-left: 0;
   width: 100%;
+  padding: 50px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -30,4 +31,4 @@ const PopularMoviesList = styled('ul')`
   }
 `;
 
-export default PopularMoviesList;
+export default MovieList;

@@ -21,20 +21,26 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
-      <CastList>
-        {movieCast.map(cast => (
+    <CastList>
+      {movieCast.length > 0 ? (
+        movieCast.map(cast => (
           <CastItem key={cast.id}>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+              src={
+                cast.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
+                  : 'https://koshka.top/uploads/posts/2021-12/thumbs/1640007343_4-koshka-top-p-koti-ugar-4.jpg'
+              }
               alt={cast.name}
             />
             <h1>{cast.name}</h1>
             <h3>Character: {cast.character}</h3>
           </CastItem>
-        ))}
-      </CastList>
-    </div>
+        ))
+      ) : (
+        <div>No Cast information available</div>
+      )}
+    </CastList>
   );
 };
 
