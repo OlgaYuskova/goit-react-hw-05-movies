@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useParams, useNavigate } from 'react-router-dom';
 import { fetchMovieDetails } from '../API';
 import {
   MovieDetailsContainer,
@@ -8,8 +8,8 @@ import {
 } from '../components/MoviesList/MovieDetailsContainer.styled.js';
 
 const MovieDetails = () => {
-  const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  // const location = useLocation();
+  const navigate = useNavigate();
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState('');
 
@@ -34,9 +34,9 @@ const MovieDetails = () => {
 
   return (
     <>
-      <NavLink to={backLink}>
-        <button type="button">Go back</button>
-      </NavLink>
+      <button type="button" onClick={() => navigate(-1)}>
+        Go back
+      </button>
       <MovieDetailsContainer>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
