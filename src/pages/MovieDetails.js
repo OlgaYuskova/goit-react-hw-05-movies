@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from '../API';
 import {
   MovieDetailsContainer,
   MovieDetailsInfo,
   MovieCastAndReviews,
-} from '../components/MoviesList/MovieDetailsContainer.styled.js';
+} from '../components/MovieDetails.js/MovieDetailsContainer.styled.js';
+import Button from 'components/MovieDetails.js/Button';
 
 const MovieDetails = () => {
-  // const location = useLocation();
-  const navigate = useNavigate();
+  const location = useLocation();
+  const prevLocation = useRef(location.state?.from ?? '/movies');
+
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState('');
 
@@ -34,9 +36,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <button type="button" onClick={() => navigate(-1)}>
-        Go back
-      </button>
+      <Button location={prevLocation.current} />
       <MovieDetailsContainer>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}

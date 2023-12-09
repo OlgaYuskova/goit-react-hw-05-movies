@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import SearchMovies from 'components/SearchMovies/SearchMovies';
 import { searchMovie } from '../API';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 const Movie = () => {
+  const location = useLocation();
   const [movies, setMovies] = useState(null);
   //eslint-disable-next-line
   const [error, setError] = useState('');
@@ -40,7 +41,7 @@ const Movie = () => {
     <section>
       <div>
         <SearchMovies onSubmit={handleFormSubmit} />
-        {movies && <MoviesList movies={movies} />}
+        {movies && <MoviesList movies={movies} location={location} />}
       </div>
     </section>
   );

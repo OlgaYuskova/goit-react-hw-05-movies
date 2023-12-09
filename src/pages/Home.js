@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { fetchMovies } from '../API';
 import HomeContaiter from '../components/Home/HomeContaiter.styled';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 const Home = () => {
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Home = () => {
   return (
     <HomeContaiter>
       <h2>Popular Movies</h2>
-      <MoviesList movies={movies} />
+      <MoviesList movies={movies} location={location} />
     </HomeContaiter>
   );
 };
